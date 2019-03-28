@@ -4,7 +4,7 @@ import shuffle from 'lodash.shuffle'
 
 import './App.css'
 
-import KeyBoard from './Keyboard'
+import KeyBoard, {Ref} from './Keyboard'
 import RandomWord, { tabH4 } from './word'
 
 var Words = ['Hurlement', 'Guepe', 'mouche', 'cannibalisme', 'fissure', 'cauchemar', 'assassin', 'sorcier', 'victoire', 'combat', 'soufre', 'absurde', 'gemmes', 'absorber', 'vaches', 'sang', 'comquete', 'manifester', 'connexion', 'internet', 'protection', 'famille', 'reptile', 'eliminer', 'qualite', 'pieds', 'fragile', 'coeur', 'douleur', 'architecte', 'Paresseux', 'Chaise', 'Argent', 'Slip', 'Zero', 'Marguerite', 'Echelle', 'Trottoir', 'Brun', 'Guitare', 'Parler', 'Paume', 'Film', 'Dauphin', 'Bouclier', 'Lancer', 'Perle', 'Tromperie', 'Minuscule', 'Pasteque', 'Moyenne'];
@@ -13,12 +13,16 @@ var Words = ['Hurlement', 'Guepe', 'mouche', 'cannibalisme', 'fissure', 'cauchem
 
 class App extends Component {
 
+  
+
   face = 1;
   hangman = React.createRef()
   rope = React.createRef()
+  KeyBoardRef = React.createRef()
   Word = null
 
   testLetter = letter => {
+    
     var i = 0
     var noLetter = 1;
     this.GeneratedWord.split('').map(letters => {
@@ -35,7 +39,6 @@ class App extends Component {
     })
 
     if (noLetter === 1) {
-
       if (this.face !== 6) {
         this.face++
       }
@@ -56,6 +59,18 @@ class App extends Component {
     this.lastLetter();
   }
 
+  resetKey(){
+    console.log(Ref.current.childNodes[1])
+    var clickKey = Ref.current.childNodes
+
+    for(var i = 0; i<clickKey.length;i++){
+      if(clickKey[i].classList.contains('click')){
+        clickKey[i].classList.remove('click')
+      }
+    }
+
+  }
+
   lastLetter() {
     var nb = 0;
     console.log(tabH4)
@@ -71,8 +86,12 @@ class App extends Component {
     if (nb === this.GeneratedWord.split('').length) {
       setTimeout(() => {
         tabH4.map(tab => {
-          tab.innerHTML = ''
+          if(tab !== null){
+            tab.innerHTML = ''
+          }
+          
         })
+        this.resetKey()
         this.setState({
           GeneratedWord: this.generateWord,
           score: parseInt(this.state.score) + 1
@@ -93,6 +112,16 @@ class App extends Component {
     this.GeneratedWord = word.toUpperCase()
     return word.toUpperCase()
 
+  }
+
+  reloadGame(){
+    this.face = 1
+    this.rope.current.classList.add('disable')
+    this.setState({
+      GeneratedWord: this.generateWord,
+      score: 0,
+      dead: 0,
+    })
   }
 
 
@@ -119,6 +148,7 @@ class App extends Component {
           />
           <KeyBoard
             onClick={this.testLetter}
+            ref={this.KeyBoardRef}
           />
 
 
@@ -131,6 +161,7 @@ class App extends Component {
 
           </div>
           <div className="wordEnd"><h2>Le mot était <span>{this.GeneratedWord}</span></h2></div>
+          <div className="reload" onClick={() => {this.reloadGame()}}>Recommencer</div>
         </div>
 
 

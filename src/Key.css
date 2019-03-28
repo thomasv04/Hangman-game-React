@@ -42,6 +42,10 @@
     background:rgb(228, 253, 255);
 }
 
+.click{
+    opacity: 0.5;
+}
+
 @media (max-width: 600px) {
     .Keyboard > div{
         width: 8vw;
