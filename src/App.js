@@ -39,11 +39,11 @@ class App extends Component {
       if (this.face !== 6) {
         this.face++
       }
-      
-      if(this.face === 6){
-          this.setState({
-            dead:1
-          })
+
+      if (this.face === 6) {
+        this.setState({
+          dead: 1
+        })
       }
 
       this.hangman.current.setAttribute('src', require('./img/hangman/' + this.face + '.png'))
@@ -60,9 +60,12 @@ class App extends Component {
     var nb = 0;
     console.log(tabH4)
     tabH4.map(tab => {
-      if (tab.classList.contains('active')) {
-        nb++
+      if(tab !== null){
+        if (tab.classList.contains('active')) {
+          nb++
+        }
       }
+      
     })
 
     if (nb === this.GeneratedWord.split('').length) {
@@ -72,6 +75,7 @@ class App extends Component {
         })
         this.setState({
           GeneratedWord: this.generateWord,
+          score: parseInt(this.state.score) + 1
         })
         this.face = 1
         this.rope.current.classList.add('disable')
@@ -96,13 +100,15 @@ class App extends Component {
     word: null,
     GeneratedWord: null,
     hangmanFace: 1,
-    dead: 0
+    dead: 0,
+    score: 0
   }
 
   render() {
     return (
       this.state.dead === 0 ?
         <div className="App">
+          <div className="score">Score : <span>{this.state.score}</span></div>
           <div className="hangman">
             <img src={require('./img/hangman/7.png')} alt="hangman" className='rope disable' ref={this.rope}></img>
             <img src={require('./img/hangman/' + this.state.hangmanFace + '.png')} alt="hangman" className="head" ref={this.hangman}></img>
@@ -118,6 +124,7 @@ class App extends Component {
 
         </div>
         : <div className="App end">
+          <div className="score">Score : <span>{this.state.score}</span></div>
           <div className="hangman full">
             <img src={require('./img/hangman/7.png')} alt="hangman" className='rope disable' ref={this.rope}></img>
             <img src={require('./img/hangman/6.png')} alt="hangman" className="head" ref={this.hangman}></img>
@@ -125,10 +132,10 @@ class App extends Component {
           </div>
           <div className="wordEnd"><h2>Le mot était <span>{this.GeneratedWord}</span></h2></div>
         </div>
-      
-      
+
+
     );
-}
+  }
 }
 
 export default App;
