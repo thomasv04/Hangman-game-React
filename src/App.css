@@ -97,6 +97,7 @@ body{
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
   font-weight: bold;
+  cursor:pointer;
 }
 
 @media (max-width: 600px) {
