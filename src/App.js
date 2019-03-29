@@ -266,8 +266,8 @@ class App extends Component {
             GenWorld={this.generateWord()}
           />
           <div className='indicesBox'>
-            <div className="indice" onClick={this.indice} ref={this.indiceRef}>Indice x <span>10</span></div>
-            <div className="remove" onClick={this.removeLetter} ref={this.removeRef}>Retirer lettre x <span>10</span></div>
+            <div className="indice" onClick={this.indice} ref={this.indiceRef}>Indice <span>10</span></div>
+            <div className="remove" onClick={this.removeLetter} ref={this.removeRef}>Retirer 5 lettres <span>10</span></div>
           </div>
           <KeyBoard
             onClick={this.testLetter}

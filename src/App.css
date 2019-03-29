@@ -110,6 +110,7 @@ body{
 }
 
 .indice, .remove{
+  position: relative;
   background: #7ba8fc;
   padding: 10px 15px;
   border-radius: 20px;
@@ -122,6 +123,24 @@ body{
   -o-border-radius: 20px;
   cursor:pointer;
   font-weight: bold;
+}
+
+.indice span, .remove span{
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  border-radius:50%;
+  top:-10px;
+  right:-10px;
+  -webkit-border-radius:50%;
+  -moz-border-radius:50%;
+  -ms-border-radius:50%;
+  -o-border-radius:50%;
+  background:#E2F0F1;
+  border:2px solid #13326d;
+  font-size: 15px;
 }
 
 .finish{
