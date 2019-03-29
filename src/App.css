@@ -100,6 +100,36 @@ body{
   cursor:pointer;
 }
 
+.indicesBox{
+  width: 100%;
+  display:flex;
+  justify-content: center;
+  align-content: space-around;
+  align-items: center;
+  margin-bottom:-50px;
+}
+
+.indice, .remove{
+  background: #7ba8fc;
+  padding: 10px 15px;
+  border-radius: 20px;
+  margin:0 10px;
+  width: auto;
+  white-space:nowrap;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  cursor:pointer;
+  font-weight: bold;
+}
+
+.finish{
+  opacity:0.5;
+  cursor:not-allowed;
+}
+
+
 @media (max-width: 600px) {
   .hangman.full{
     width:30vw !important;
