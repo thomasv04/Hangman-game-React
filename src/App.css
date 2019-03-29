@@ -24,9 +24,9 @@ body{
 
 .hangman{
   display: block;
-  width: 15vw;
+  width: 7vw;
   max-width: 200px;
-  margin: 0 calc((100% - 15vw)/2);
+  margin: 0 calc((100% - 7vw)/2);
   margin-top:60px;
   position: relative;
 }
@@ -50,8 +50,8 @@ body{
 }
 
 .hangman.full{
-  width:20vw !important;
-  margin: 0 calc((100% - 20vw)/2);
+  width:10vw !important;
+  margin: 0 calc((100% - 10vw)/2);
   max-width: 300px;
 }
 
@@ -148,8 +148,34 @@ body{
   cursor:not-allowed;
 }
 
+@media (max-width: 1200px) {
+  .hangman{
+    width: 15vw;
+    margin: 0 calc((100% - 15vw)/2);
+  }
+
+  .hangman.full{
+    width:20vw !important;
+    margin: 0 calc((100% - 20vw)/2);
+    max-width: 400px;
+  }
+
+  .score{
+    height: 20px;
+    padding:2% 5%;
+  
+  }
+  
+  
+}
+
 
 @media (max-width: 600px) {
+  .hangman{
+    width: 15vw;
+    margin: 0 calc((100% - 15vw)/2);
+  }
+
   .hangman.full{
     width:30vw !important;
     margin: 0 calc((100% - 30vw)/2);
